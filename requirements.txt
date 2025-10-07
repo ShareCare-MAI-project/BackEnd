@@ -1,1 +1,7 @@
-
+# Установка зависимостей
+fastapi[all]
+fastapi-users[sqlalchemy]
+sqlalchemy
+aiosqlite
+passlib[bcrypt]
+python-jose[cryptography]
