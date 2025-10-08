@@ -120,7 +120,7 @@ async def verify_code(body: OTPVerify):
 
 @app.get("/")
 async def root():
-    return {"message": "🚀 Dobrodar API запущен!"}
+    return {"message": " Dobrodar API запущен!"}
 
 @app.get("/users/count")
 async def users_count():
