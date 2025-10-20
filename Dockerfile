@@ -1,0 +1,20 @@
+# BUILD .VENV
+FROM python:3.13.9-alpine3.22 AS builder
+WORKDIR /venv_build
+COPY pyproject.toml uv.lock ./
+RUN apk add uv && uv sync --locked
+
+# RUNTIME
+FROM python:3.13.9-alpine3.22 AS runtime
+
+WORKDIR /sharecare
+COPY --from=builder /venv_build/.venv /sharecare/.venv
+COPY ./app ./app
+ENV PATH="/sharecare/.venv/bin:$PATH"
+
+EXPOSE ${PORT}
+
+CMD ["python", "-m", "app.main"]
+
+
+

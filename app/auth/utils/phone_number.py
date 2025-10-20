@@ -3,10 +3,10 @@ from typing import Any, Callable
 
 from pydantic_core import core_schema
 
-PHONE_REGEX = r"^\+[1-9][0-9]*$"
+PHONE_REGEX = r"^\+79[0-9]{9}$"
 
 
-#  Пример кастомного типа, работающего с Pydantic
+#  Пример кастомного типа, работающего с Pydantic+Swagger
 class PhoneNumber(str):
     """Класс для валидации номера телефона."""
 

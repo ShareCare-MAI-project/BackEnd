@@ -1,13 +1,13 @@
 from fastapi import APIRouter, HTTPException
 from starlette import status
 
-
 from app.auth.auth_models import LoginRequest, AuthResponse, OTPVerifyRequest
 from app.auth.auth_service import AuthService
 
 router = APIRouter()
 
 TAG = "Auth"
+
 
 @router.post(
     "/request-otp",

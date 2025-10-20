@@ -10,7 +10,7 @@ class LoginRequest(BaseModel):
 # OTP = OneTimePassword
 class OTPVerifyRequest(BaseModel):
     phone: PhoneNumber  # Кастомный класс, интегрированный с pydantic
-    otp: str = Field(min_length=4, max_length=4, examples=["1234", "4421"])
+    otp: str = Field(min_length=4, max_length=4, examples=["1234", "4421"], description="OTP Код")
 
 
 class AuthResponse(BaseModel):
