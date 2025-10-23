@@ -2,6 +2,8 @@ import os
 
 PROJECT_NAME = "ShareCare API"
 
+OPEN_AI_KEY = os.getenv("OPEN_AI_KEY")
+
 POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD", "fake_password")
 POSTGRES_PORT = os.getenv("POSTGRES_PORT", "5432")
 POSTGRES_USER = os.getenv("POSTGRES_USER", "user")

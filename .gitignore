@@ -1,5 +1,7 @@
-# Python
 db/18/
+uv.lock
+
+# Python
 __pycache__/
 *.py[cod]
 *$py.class

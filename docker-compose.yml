@@ -1,8 +1,8 @@
 services:
-  server:
+  app:
     build:
       context: .
-      dockerfile: Dockerfile-server
+      dockerfile: Dockerfile-app
       target: runtime
     env_file:
       - ./.env

@@ -10,5 +10,6 @@ dependencies = [
     "passlib[bcrypt]",
     "cryptography",
     "psycopg2-binary",
-    "asyncpg"
+    "asyncpg",
+    "openai"
 ]

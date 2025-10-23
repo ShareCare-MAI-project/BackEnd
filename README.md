@@ -1,3 +1,7 @@
+# QuickStart (Настройка проекта)
+1) Скачать uv
+2) Прописать uv sync
+
 # QuickStart (Docker)
 1) Скачать docker и docker-compose [\*тык*](https://docs.docker.com/compose/install/)
 2) Настроить переменные окружения
@@ -15,6 +19,6 @@
 - Прочитать [README.md в папке db](./db/README.md)
 - Контейнеры можно запустить в фоне `docker compose up -d` (ввод с клавиатуры останется)
 - Если запустить контейнеры в фоне, то в них можно запускать другие процессы
-   - `docker compose exec -it server sh` – запустить bash на минималках в контейнере с питоном
+   - `docker compose exec -it app sh` – запустить bash на минималках в контейнере с питоном
    - `docker compose exec -it postgres sh` – то же самое, но для контейнера с бд
    - `exit` – выход
