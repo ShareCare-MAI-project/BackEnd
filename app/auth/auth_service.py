@@ -6,7 +6,7 @@ from starlette.status import HTTP_400_BAD_REQUEST
 from app.auth.auth_models import LoginRequest, OTPVerifyRequest, AuthResponse
 from app.auth.user_base import UserBase
 from app.auth.utils.otp_manager import OTPManager
-from app.core.database import default_db_request
+from app.core.database import default_async_db_request
 
 FAKE_OTP = "1111"
 
@@ -34,9 +34,19 @@ class AuthService:
                 status_code=HTTP_400_BAD_REQUEST,
                 detail="Неверный или просроченный код подтверждения"
             )
+        user: UserBase = await default_async_db_request(lambda session: UserBase.get_by_phone(phone, session=session))
 
-        user: UserBase = default_db_request(lambda session: UserBase.get_by_phone(phone, session=session))
-        username = user.name if user is not None else None
+        if user is None:
+            new_user = UserBase(
+                name=None,
+                encrypted_phone=OTPManager.encrypt_phone_number(phone)
+            )
+            await default_async_db_request(new_user.create)
+
+            username = None
+        else:
+            username = user.name
+
         token = str(uuid.uuid4())
 
         return AuthResponse(

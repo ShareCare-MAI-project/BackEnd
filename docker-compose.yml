@@ -1,11 +1,29 @@
 services:
-  app:
+  server:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile-server
       target: runtime
-    environment:
-      - PORT=8000
+    env_file:
+      - ./.env
+    working_dir: /sharecare
     volumes:
       - ./app:/sharecare/app
     restart: unless-stopped
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    depends_on:
+      - postgres
+    command: ["python", "-m", "app.main"]
+  postgres:
+    image: postgres:18-alpine3.22
+    env_file:
+      - ./.env
+    ports:
+      - ${POSTGRES_PORT}:${POSTGRES_PORT}
+    hostname: ${HOST}
+    volumes:
+      - ./db:/var/lib/postgresql
+    working_dir: /sharecare
+    restart: unless-stopped
+    command: -p ${POSTGRES_PORT}

@@ -1,11 +1,12 @@
 import os
 
-SECRET_KEY = os.getenv("SECRET_KEY", "fake_key")
-DATABASE_URL = os.getenv("DATABASE_URL", "fake_db")
-
-FERNET_KEY = os.getenv("FERNET_KEY", "fApsNI6yQf9_LLLkwRH0BYNa3Y64WvIb-b6xofLG4PU=")
-
 PROJECT_NAME = "ShareCare API"
 
-HOST = "0.0.0.0"
-PORT = 8000
+POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD", "fake_password")
+POSTGRES_PORT = os.getenv("POSTGRES_PORT", "5432")
+POSTGRES_USER = os.getenv("POSTGRES_USER", "user")
+POSTGRES_DB = os.getenv("POSTGRES_DB", "sharecare")
+
+FERNET_KEY = os.getenv("ENCRYPTION_KEY", "fApsNI6yQf9_LLLkwRH0BYNa3Y64WvIb-b6xofLG4PU=")
+
+SERVER_PORT = int(os.getenv("SERVER_PORT", 8000))

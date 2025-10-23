@@ -12,7 +12,9 @@ class OTPManager:
 
     @classmethod
     def verify(cls, phone_number: PhoneNumber, code: str) -> bool:
-        return cls._otp_requests[cls.encrypt_phone_number(phone_number)] == cls._encrypt_opt(code)
+        encrypted_phone_number = cls.encrypt_phone_number(phone_number)
+        return ((encrypted_phone_number in cls._otp_requests) and
+                cls._otp_requests[encrypted_phone_number] == cls._encrypt_opt(code))
 
     @classmethod
     def add_otp_request(cls, phone_number: PhoneNumber, code: str):
