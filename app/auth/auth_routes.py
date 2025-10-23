@@ -1,3 +1,5 @@
+import logging
+
 from fastapi import APIRouter, HTTPException
 from starlette import status
 
@@ -41,6 +43,7 @@ async def verify_otp(request: OTPVerifyRequest):
         # Перебрасываем уже обработанные ошибки
         raise
     except Exception as e:
+        logging.error(e)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Ошибка при верификации кода"

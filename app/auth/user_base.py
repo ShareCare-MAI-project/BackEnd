@@ -17,7 +17,7 @@ class UserBase(Base):
     # Но это MVP момент, чтобы было меньше ручек =)
     # cached_phone: Mapped[Optional[str]] = mapped_column(String(20))
     name: Mapped[Optional[str]] = mapped_column(String(20), nullable=True)
-    encrypted_phone: Mapped[bytes] = mapped_column(LargeBinary)
+    encrypted_phone: Mapped[bytes] = mapped_column(LargeBinary, unique=True)
 
     def __repr__(self) -> str:
         return f"UserBase(id={self.id}, name={self.name}, encrypted_phone={self.encrypted_phone})"
