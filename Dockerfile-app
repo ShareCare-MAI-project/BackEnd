@@ -1,7 +1,8 @@
 # BUILD .VENV
 FROM python:3.13.9-alpine3.22 AS builder
 WORKDIR /venv_build
-COPY pyproject.toml uv.lock ./
+COPY pyproject.toml ./
+COPY uv.lock ./ 2>/dev/null || echo "uv.lock not found, continuing without it"
 RUN apk add uv && uv sync
 
 # RUNTIME
