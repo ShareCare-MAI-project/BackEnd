@@ -1,6 +1,12 @@
 # QuickStart (Настройка проекта)
 1) Скачать uv [\*тык*](https://docs.astral.sh/uv/getting-started/installation/)
-2) Прописать uv sync
+2) Прописать `uv sync`
+3) Запуск `uv run -m app.main`
+> [!IMPORTANT]
+> Лучше запускать всё-таки в докере:
+> - Засетапленная БД
+> - Удобная настройка окружения
+> - Авто-перезапуск 
 
 # QuickStart (Docker)
 1) Скачать docker и docker-compose [\*тык*](https://docs.docker.com/compose/install/)
