@@ -15,6 +15,7 @@ services:
     depends_on:
       - postgres
     command: ["python", "-m", "app.main"]
+
   postgres:
     image: postgres:18-alpine3.22
     env_file:

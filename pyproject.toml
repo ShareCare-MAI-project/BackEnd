@@ -11,5 +11,6 @@ dependencies = [
     "cryptography",
     "psycopg2-binary",
     "asyncpg",
+    "uuid-utils",
     "openai"
 ]

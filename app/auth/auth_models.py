@@ -1,5 +1,5 @@
 from typing import Optional
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, UUID7
 from app.auth.utils.phone_number import PhoneNumber
 
 
@@ -14,7 +14,7 @@ class OTPVerifyRequest(BaseModel):
 
 
 class AuthResponse(BaseModel):
-    token: str = Field(description="UUID4 токен")  # str(uuid)
+    token: UUID7 = Field(description="UUID7 токен")  # str(uuid)
     # Если имени нет, то перебрасываем на заполнение профиля (в приложении)
     name: Optional[str] = Field(None,
                                 description="Имя пользователя, если заполнено, Иначе -> отправляем заполнять в "

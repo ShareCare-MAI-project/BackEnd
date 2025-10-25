@@ -1,6 +1,8 @@
+import uuid
 from typing import Optional
 
-from sqlalchemy import String, select, LargeBinary, Integer
+import uuid_utils
+from sqlalchemy import String, select, LargeBinary, UUID
 from sqlalchemy.orm import Mapped
 from sqlalchemy.testing.schema import mapped_column
 
@@ -11,7 +13,14 @@ from app.core.database import Base
 
 class UserBase(Base):
     __tablename__ = "users"
-    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+
+    id: Mapped[uuid.UUID] = mapped_column(
+        UUID,
+        primary_key=True,
+        default=uuid_utils.uuid7(),
+        unique=True,
+        nullable=False
+    )
 
     # Optional, т.к. во время регистрации у пользователя может не быть имени
     # Но это MVP момент, чтобы было меньше ручек =)
