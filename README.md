@@ -1,5 +1,5 @@
 # QuickStart (Настройка проекта)
-1) Скачать uv
+1) Скачать uv [\*тык*](https://docs.astral.sh/uv/getting-started/installation/)
 2) Прописать uv sync
 
 # QuickStart (Docker)
